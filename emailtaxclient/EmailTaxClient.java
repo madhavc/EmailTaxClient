@@ -15,7 +15,7 @@ import javax.swing.*;
 public class EmailTaxClient  {
         private ButtonGroup buttons ;
         private JButton nextButton, backButton, submitButton;
-        private JCheckBox checkBox1;
+        private JCheckBox checkBox1,checkBox2,checkBox3,checkBox4,checkBox5;
         JFrame frame, frame1;
         private JLabel nameLabel, emailLabel;
         private JPanel panel;
@@ -35,6 +35,7 @@ public class EmailTaxClient  {
         frame.setSize(600,600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         panel = new JPanel();
         
         buttons = new ButtonGroup();
@@ -106,11 +107,13 @@ public class EmailTaxClient  {
         
         radioButton1 = new JRadioButton("Request All Information");
         radioButton2 = new JRadioButton("W2-Received, Request Client Info W/S");
-        radioButton3 = new JRadioButton("");
+        radioButton3 = new JRadioButton("Documents Recieved InProgress");
+        radioButton4 = new JRadioButton("More Info Needed");
         buttons.add(radioButton1);
         buttons.add(radioButton2);
         buttons.add(radioButton3);
- 
+        buttons.add(radioButton4);
+        
         checkBox1 = new JCheckBox("Add - Fees Depend on Per Case");
         scrollPane1 = new JScrollPane();
         
@@ -118,67 +121,76 @@ public class EmailTaxClient  {
             public void actionPerformed(ActionEvent event){
                 frame.setVisible(false);
                 mainFrame();
+                
             }
         });
        
         GroupLayout panelLayout = new GroupLayout(panel);
         panel.setLayout(panelLayout);
+
         panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+            panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+            .addGroup(panelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING,false)
                     .addComponent(emailLabel)
                     .addComponent(nameLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING,false)
                     .addComponent(nameField, GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                    .addComponent(emailField))
+                    .addComponent(emailField,GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(radioButton1, GroupLayout.Alignment.TRAILING)
-                    .addComponent(radioButton2, GroupLayout.Alignment.TRAILING)
-                    .addComponent(checkBox1, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(radioButton3, GroupLayout.Alignment.TRAILING))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING,false)
+                    .addComponent(radioButton1, GroupLayout.Alignment.LEADING)
+                    .addComponent(radioButton2, GroupLayout.Alignment.LEADING)
+                    .addComponent(radioButton3, GroupLayout.Alignment.LEADING)
+                    .addComponent(radioButton4, GroupLayout.Alignment.LEADING)
+                    .addComponent(checkBox1, GroupLayout.Alignment.LEADING))
+                .addGap(18, 18, 18))
+                    
             .addGroup(panelLayout.createSequentialGroup()
-                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addComponent(backButton)
-                        .addGap(210, 210, 210)
-                        .addComponent(nextButton)))
-//                    .addGroup(panelLayout.createSequentialGroup()
-//                        .addContainerGap()
-//                        .addComponent(scrollPane1)))
-                .addContainerGap())
+                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                .addGap(18, 18, 18))
+                    .addComponent(scrollPane1, 300, 400, 600)
+                .addGap(18, 18, 18))
+                .addGroup(panelLayout.createSequentialGroup()
+                    .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING,false)
+                    .addComponent(backButton))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED,10, Short.MAX_VALUE)
+                    .addComponent(nextButton)
+                .addGap(18,18,18))
         );
         panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING,false)
             .addGroup(panelLayout.createSequentialGroup()
+                
                 .addContainerGap()
-                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(nameLabel)
                     .addComponent(nameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addComponent(radioButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                    
                 .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addComponent(emailLabel)
                         .addComponent(emailField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addComponent(radioButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(radioButton3)
+                    .addComponent(radioButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(checkBox1)
+                    .addComponent(radioButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(checkBox1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-//                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 213, GroupLayout.PREFERRED_SIZE)
-//                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(backButton)
                     .addComponent(nextButton))
-                .addContainerGap())
+                )
         );
-        ;
         
         frame.add(panel);
         frame.setVisible(true);
@@ -190,18 +202,106 @@ public class EmailTaxClient  {
         createFrame();
         frame.add(panel);
         
-        radioButton1 = new JRadioButton("Request All Information");
-        radioButton2 = new JRadioButton("W2-Received, Request Client Info W/S");
-        radioButton3 = new JRadioButton("");
+        
+        checkBox1 = new JCheckBox("Send E-File Forms");
+        checkBox2 = new JCheckBox("Send Engagement Letter");
+        checkBox3 = new JCheckBox("Request Payment");
+        checkBox4 = new JCheckBox("Send Tax Copy");
+        
+        JLabel federalRefundLabel = new JLabel("Fedeal Refund:");
+        JTextField federalRefundField = new JTextField("");
+        
+        JLabel stateRefundLabel = new JLabel("State Refund:");
+        JTextField stateRefundField = new JTextField("");
         
         
-        buttons.add(radioButton1);
-        buttons.add(radioButton2);
- 
-        checkBox1 = new JCheckBox("Add - Fees Depend on Per Case");
+        JButton addState = new JButton("Add Another State");
+        addState.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
+        
+        
+        
         scrollPane1 = new JScrollPane();
-       
         
+        backButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent event){
+                frame.setVisible(false);
+                mainFrame();
+                
+            }
+        });
+       
+        GroupLayout panelLayout = new GroupLayout(panel);
+        panel.setLayout(panelLayout);
+
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING,false)
+                    .addComponent(emailLabel)
+                    .addComponent(nameLabel))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING,false)
+                    .addComponent(nameField, GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(emailField,GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING,false)
+                    .addComponent(radioButton1, GroupLayout.Alignment.LEADING)
+                    .addComponent(radioButton2, GroupLayout.Alignment.LEADING)
+                    .addComponent(radioButton3, GroupLayout.Alignment.LEADING)
+                    .addComponent(radioButton4, GroupLayout.Alignment.LEADING)
+                    .addComponent(checkBox1, GroupLayout.Alignment.LEADING))
+                .addGap(18, 18, 18))
+                    
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                .addGap(18, 18, 18))
+                    .addComponent(scrollPane1, 300, 400, 600)
+                .addGap(18, 18, 18))
+                .addGroup(panelLayout.createSequentialGroup()
+                    .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING,false)
+                    .addComponent(backButton))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED,10, Short.MAX_VALUE)
+                    .addComponent(nextButton)
+                .addGap(18,18,18))
+        );
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING,false)
+            .addGroup(panelLayout.createSequentialGroup()
+                
+                .addContainerGap()
+                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(nameLabel)
+                    .addComponent(nameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(radioButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                    
+                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(emailLabel)
+                        .addComponent(emailField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addComponent(radioButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(radioButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(radioButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(checkBox1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(backButton)
+                    .addComponent(nextButton))
+                )
+        );
         
         frame.add(panel);
         frame.setVisible(true);
